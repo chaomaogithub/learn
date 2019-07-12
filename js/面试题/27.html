@@ -1,0 +1,22 @@
+<html>
+    <head></head>
+
+    <body>
+
+        <script>
+            // 在ES5中，顶层对象的属性和全局变量是等价的，var 命令和 function 命令声明的全局变量，自然也是顶层对象。
+            // 但ES6规定，var 命令和 function 命令声明的全局变量，依旧是顶层对象的属性，但 let命令、const命令、class命令声明的全局变量，不属于顶层对象的属性。
+            var a = 1
+            let b = 2
+            const c = 3
+            window.b = 22
+
+            {
+                let d = 4
+                console.log(b)  // 2
+            }
+            debugger
+            // 通过上图也可以看到，在全局作用域中，用 let 和 const 声明的全局变量并没有在全局对象中，只是一个块级作用域（Script）中
+        </script>
+    </body>
+</html>
