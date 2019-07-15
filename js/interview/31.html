@@ -1,0 +1,34 @@
+<html>
+    <head></head>
+
+    <body>
+
+        <script>
+            // 题目：改造下面的代码，使之输出0 - 9，写出你能想到的所有解法。
+
+            for (var i = 0; i< 10; i++){
+                setTimeout(() => {
+                    console.log(i);
+                }, 1000)
+            }
+
+            // 方法一 let
+            console.log('=============方法一')
+            for (let i = 0; i< 10; i++){
+                setTimeout(() => {
+                    console.log(i);
+                }, 1000)
+            }
+
+            // 方法二 闭包
+            console.log('=============方法二')
+            for (let i = 0; i< 10; i++){
+                setTimeout(function() {
+                    (function(i) {
+                        console.log(i);
+                    })(i)
+                }, 1000)
+            }
+        </script>
+    </body>
+</html>

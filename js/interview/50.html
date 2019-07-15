@@ -1,0 +1,27 @@
+<html>
+    <head></head>
+
+    <body>
+
+        <script>
+            // 实现 (5).add(3).minus(2) 功能
+            Number.prototype.add = function(num) {
+                if (typeof num !== 'number') {
+                    throw new Error('请输入数字')
+                }
+
+                return this + num
+            }
+
+            Number.prototype.minus = function(num) {
+                if (typeof num !== 'number') {
+                    throw new Error('请输入数字')
+                }
+
+                return this - num
+            }
+
+            console.log((1).add(3).minus('aaa'))
+        </script>
+    </body>
+</html>
