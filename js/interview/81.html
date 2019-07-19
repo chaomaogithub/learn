@@ -1,0 +1,16 @@
+<html>
+    <head></head>
+
+    <body>
+
+        <script>
+            // 题目：打印出 1 - 10000 之间的所有对称数 例如：121、1331 等
+            // 生成数组： [...Array(10000).keys()]
+            for (var i = 1; i < 1000; i++) {
+            	if (i === +(i + '').split('').reverse().join('')) {
+            		console.log(i)
+            	}
+            }
+        </script>
+    </body>
+</html>

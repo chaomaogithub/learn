@@ -1,0 +1,21 @@
+<html>
+    <head></head>
+
+    <body>
+
+        <script>
+            // 题目：如何把一个字符串的大小写取反（大写变小写小写变大写），例如 ’AbC' 变成 'aBc' 。
+            var str = 'aBc'
+
+            var str1 = str.split('').map(function(item) {
+                return item.toUpperCase() === item ? item.toLowerCase() : item.toUpperCase()
+            }).join('')
+
+            console.log(str1)
+
+            [].map.call(str, function(item){ 
+                return /[a-z]/.test(item) ? item.toUpperCase() : item.toLowerCase();
+            }).join('');
+        </script>
+    </body>
+</html>

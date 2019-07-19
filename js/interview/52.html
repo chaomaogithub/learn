@@ -1,0 +1,110 @@
+<html>
+    <head></head>
+    <style>
+        .p {
+            border: 1px solid red;
+            height: 200px;
+        }
+        .c {
+            background: blue;
+            height: 80px;
+            width: 200px;
+            font-size: 36px;
+            color: #fff;
+        }
+        .parent {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .parent2 {
+            position: relative;
+        }
+        .child2 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .child3 {
+            width: 50px;
+            height: 10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -25px;
+            margin-top: -5px;
+        }
+
+        .child4 {
+            width: 150px;
+            height: 80px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+        }
+
+        .parent5 {
+            display: grid;
+        }
+        .child5 {
+            justify-self: center;
+            align-self: center;
+        }
+
+        .parent6 {
+            display: flex;
+        }
+        .child6 {
+            margin: auto;
+        }
+        .parent7 {
+            text-align: center;
+        }
+        .parent7::before {
+            content: "";
+            display: inline-block;
+            width: 0;
+            height: 100%;
+            vertical-align: middle;
+        }
+        .child7 {
+            display: inline-block;
+            vertical-align: middle;
+        }
+    </style>
+    <body>
+        <div class="parent p">
+            <div class="child c">child1</div>
+        </div>
+
+        <div class="parent2 p">
+            <div class="child2 c">child2</div>
+        </div>
+
+        <div class="parent2 p">
+            <div class="child3 c">child3</div>
+        </div>
+
+        <div class="parent2 p">
+            <div class="child4 c">child4</div>
+        </div>
+
+        <div class="parent5 p">
+            <div class="child5 c">child5</div>
+        </div>
+
+        <div class="parent6 p">
+            <div class="child6 c">child6</div>
+        </div>
+
+        <div class="parent7 p">
+            <div class="child7 c">child7</div>
+        </div>
+    </body>
+</html>
