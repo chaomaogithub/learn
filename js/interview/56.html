@@ -1,0 +1,87 @@
+<html>
+    <head></head>
+
+    <body>
+
+        <script>
+            // 题目：要求设计 LazyMan 类，实现以下功能。
+
+            class LazyManClass {
+                constructor(name) {
+                    this.name = name
+                    this.taskList = []
+                    console.log('Hi I am ' + name)
+                    setTimeout(()=> {
+                        console.log(this.taskList, this.taskList.length)
+                        this.next()
+                    }, 0)
+                }
+                eat(name) {
+                    console.error('eat')
+                    let fn = ()=> {
+                        console.log('I am eating ' + name)
+                        this.next()
+                    }
+                    
+                    this.taskList.push(fn)
+                    return this
+                }
+                sleep(num) {
+                    console.error('sleep：' + num)
+                    let fn = ()=> {
+                        setTimeout(()=> {
+                            this.next()
+                        }, num * 1000)
+                    }
+                    this.taskList.push(fn)
+
+                    return this
+                }
+                sleepFirst(num) {
+                    console.error('sleepFirst：' + num)
+                    let fn = ()=> {
+                        setTimeout(()=> {
+                            this.next()
+                        }, num * 1000)
+                    }
+                    this.taskList.unshift(fn)
+
+                    return this
+                }
+                next() {
+                    let fn = this.taskList.shift()
+                    if (typeof fn === 'function') {
+                        fn()
+                    }
+                }
+            }
+
+            function LazyMan(name) {
+                return new LazyManClass(name)
+            }
+
+
+            // LazyMan('Tony');
+            // Hi I am Tony
+
+            // LazyMan('Tony').sleep(2).eat('lunch');
+            // Hi I am Tony
+            // 等待了2秒...
+            // I am eating lunch
+
+            // LazyMan('Tony').eat('lunch').sleep(10).eat('dinner');
+            // Hi I am Tony
+            // I am eating lunch
+            // 等待了10秒...
+            // I am eating diner
+
+            LazyMan('Tony').eat('lunch').eat('dinner').sleepFirst(5).sleep(10).eat('junk food');
+            // Hi I am Tony
+            // 等待了5秒...
+            // I am eating lunch
+            // I am eating dinner
+            // 等待了10秒...
+            // I am eating junk food
+        </script>
+    </body>
+</html>

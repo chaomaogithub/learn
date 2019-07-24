@@ -1,0 +1,68 @@
+<html>
+    <head></head>
+
+    <body>
+
+        <script>
+            // 题目：给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。
+            /**
+                示例:
+                输入: [0,1,0,3,12]
+                输出: [1,3,12,0,0]
+
+                说明:
+
+                必须在原数组上操作，不能拷贝额外的数组。
+                尽量减少操作次数。
+             */
+            let arr = [0, 0, 1 ,0,10 ,0 ,3 ,12]
+
+            // 方法1
+            function moveZero(arr) {
+                let i = 0
+                let index = -1
+                while((index = arr.indexOf(0)) !== -1) {
+                    arr.splice(index, 1)
+                    i++
+                }
+                arr.push(...Array(i).fill(0))
+
+                return arr
+            }
+
+            // 方法2
+            function moveZero2(arr) {
+                let len = arr.length
+                let j = 0
+
+                for (let i = 0; i < len - j; i++) {
+                    if (arr[i] === 0) {
+                        arr.push(0)
+                        arr.splice(i, 1)
+                        i--
+                        j++
+                    }
+                }
+                return arr
+            }
+
+            // 方法3
+            function moveZeroToLast(arr) {
+                let index = 0;
+                for (let i = 0, length = arr.length; i < length; i++) {
+                    if (arr[i] === 0) {
+                        index++;
+                    } else if (index !== 0) {
+                        arr[i - index] = arr[i];
+                        arr[i] = 0;
+                    }
+                }
+                return arr;
+            }
+
+            console.log(moveZero(arr.concat()))
+            console.log(moveZero2(arr.concat()))
+            console.log(moveZeroToLast(arr.concat()))
+        </script>
+    </body>
+</html>
