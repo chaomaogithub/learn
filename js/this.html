@@ -1,0 +1,47 @@
+<html>
+    <head></head>
+
+    <body>
+        <script>
+            // 全局环境
+            // 无论是否在严格模式下，在全局执行环境中（在任何函数体外部）this 都指向全局对象。
+
+            // 在浏览器中, window 对象同时也是全局对象：
+            console.log(this === window); // true
+
+            a = 37;
+            console.log(window.a); // 37
+
+            this.b = "MDN";
+            console.log(window.b)  // "MDN"
+            console.log(b)         // "MDN"
+
+            // 函数（运行内）环境
+            // 在函数内部，this的值取决于函数被调用的方式
+
+            // 简单调用
+            // 因为下面的代码不在严格模式下，且this的值不是由该调用设置的，所以this的值默认指向全局对象
+
+            function f1() {
+                return this
+            }
+
+            // 在浏览器中
+            console.log(f1() === window)
+
+            function f2(){
+              "use strict"; // 这里是严格模式
+              return this;
+            }
+
+            console.log(f2() === undefined); // true
+
+            let aa = 22222222
+        </script>
+
+
+        <script>
+            console.log(aa)
+        </script>
+    </body>
+</html>

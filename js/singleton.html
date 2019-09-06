@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var SingleTon = function(name) {
+            this.name = name
+        }
+
+        SingleTon.prototype.getName = function() {
+            return this.name
+        }
+
+        SingleTon.getInstance = (function (name) {
+            var instance
+
+            return function() {
+                if (!instance) {
+                    instance = new SingleTon(name)
+                }
+
+                return instance
+            }
+        })()
+
+        var a = SingleTon.getInstance('ConardLi');
+        var b = SingleTon.getInstance('ConardLi2');
+
+        console.log(a === b);   //true
+    </script>
+</body>
+</html>

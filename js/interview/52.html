@@ -77,8 +77,27 @@
             display: inline-block;
             vertical-align: middle;
         }
+
+        .a {
+        	width: 600px;
+        	height: 400px;
+        	border: 1px solid red;
+        }
+        .b {
+        	width: 300px;
+        	height: 100px;
+        	background: yellow;
+        	margin-left: 50%;
+        	margin-top: 50%;
+        	transform: translateX(-50%);
+        	transform: translateY(-50%);
+        }
     </style>
     <body>
+    	<div class="a">
+    		<div class="b"></div>
+    	</div>
+
         <div class="parent p">
             <div class="child c">child1</div>
         </div>

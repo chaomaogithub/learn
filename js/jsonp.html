@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jsonp</title>
+</head>
+<body>
+    <script>
+        "use strict"
+        var jsonp = function(url, data, callback) {
+            var scriptDom = document.createElement('script')
+
+            var param = ''
+
+            for (var i in data) {
+                param += i + '=' + data[i] + '&'
+            }
+
+            var callbackName = ('call_back_' + Math.random()).replace('.', '')
+
+            param += 'callback=' + callbackName
+
+            scriptDom.src = url + '?' + param
+
+            window[callbackName] = function(data) {
+                callback(data)
+                document.body.removeChild(scriptDom)
+            }
+
+            document.body.appendChild(scriptDom)
+        }
+
+        jsonp(
+            'http://zt.jd.com/fcgi-bin/jdzt/ad/list?ie=utf-8&g_tk=800372288&g_ty=undefined',
+            {
+                planid: 0, 
+                profileid: 0,
+                pageno: 1,
+                pagesize: 50,
+                adstate: 0,
+                bidtype: 0,
+                mediatype: 0
+            },
+            function(data) {
+                console.log(data)
+            }
+        )
+    </script>
+</body>
+</html>

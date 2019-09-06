@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log(myInstanceof([], Object))
+
+        function myInstanceof(left, right) {
+            //let proto = left.__proto__
+            let proto = Object.getPrototypeOf(left)
+
+            if (proto) {
+                if (proto === right.prototype) {
+                    return true
+                } else {
+                    return myInstanceof(proto, right)
+                }
+            } else {
+                return false
+            }
+        }
+    </script>
+</body>
+</html>

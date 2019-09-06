@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function P(name) {
+            this.name = name
+        }
+        P.prototype.getName = function() {
+            return this.name
+        }
+
+        function C(name) {
+            P.call(this, name)
+        }
+
+        extend(C, P)
+
+        var c = new C('哈哈')
+
+        console.log(c)
+
+        function extend(child, parent) {
+            for (var i in parent) {
+                if (parent.hasOwnProperty(i)) {
+                    child[i] = parent[i]
+                }
+            }
+
+            child.prototype = Object.create(parent.prototype, {
+                constructor: {
+                    value: child,
+                    enumerable: false,
+                    writable: true,
+                    configurable: true
+                }
+            })
+        }
+    </script>
+</body>
+</html>
