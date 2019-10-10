@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script src="./array.js"></script>
+<script src="./dep.js"></script>
+<script src="./define.js"></script>
+<script src="./watch.js"></script>
+<script>
+    var obj = {
+        a: {
+            b: {
+                c: 10,
+                arr: [1, 2, 3]
+            }
+        }
+    }
+
+    let ob = new Observer(obj)
+
+    const bbb = ob.value.a.b.arr
+
+    console.log(ob)
+</script>
+</html>
